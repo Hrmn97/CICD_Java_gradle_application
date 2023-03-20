@@ -41,7 +41,7 @@ pipeline{
                 script{
                     dir('kubernetes/') {
                         sh '''
-                       helm datree version
+                       helm  version
                         '''
                     }
                 }
