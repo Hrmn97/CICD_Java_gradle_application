@@ -22,19 +22,6 @@ pipeline{
                 }
             }
         }
-        stage("Docker build and docker push"){
-            steps{
-                script{
-                    withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_password')]) {
-                        sh '''
-                            docker build -t harmansingh9765/springbuild:${VERSION} .
-                            docker login -u harmansingh9765 -p $docker_password
-                            docker push harmansingh9765/springbuild:${VERSION}
-                            docker rmi harmansingh9765/springbuild:${VERSION}
-                        '''
-                    }
-                }
-            }
-        }
+        
     }
 }
