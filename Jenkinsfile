@@ -2,7 +2,6 @@ pipeline{
     agent any
     environment{
         VERSION = "${env.BUILD_ID}"
-        DATREE_TOKEN = "${datree}"
     } 
     stages{
         stage("sonar quality check"){
@@ -41,10 +40,11 @@ pipeline{
             steps{
                 script{
                     dir('kubernetes/') {
-                        withENV(['DATREE_TOKEN'])
+                        withEnv(['DATREE_TOKEN=33f2180d-fa83-40df-99b8-bee48a8de2b1']) {      
                         sh '''
                             helm  datree test myapp/
                         '''
+                        }
                     }
                 }
             }
